@@ -1,0 +1,43 @@
+<dom-module id="rbts-service-provider">
+	<style>
+		:host {
+			display: none;
+		}
+	</style>
+	<template>
+	</template>
+	<script>
+		(function(){
+			// put your static code here
+
+			Polymer({
+				is: 'rbts-service-provider',
+				properties: {
+				},
+				attached: function() {
+				},
+				created: function() {
+				},
+
+                invoke: function(serviceName, args, cb) {
+                    switch(serviceName) {
+                    case 'fetch-estados-disponiveis':
+                        this.async(function() {
+                            this._resolveCallback(cb, null, [
+                                {id: "1", descricao: "Minas Gerais"},
+                                {id: "2", descricao: "São Paulo"},
+                            ]);
+                        });
+                        break;
+                    }
+                },
+
+                _resolveCallback: function(cb, err, ret) {
+                    if (cb) {
+                        cb(err, ret);
+                    }
+                },
+			});
+		}());
+	</script>
+</dom-module>

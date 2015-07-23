@@ -1,0 +1,46 @@
+<dom-module id="demo-validate-endereco">
+	<style>
+		:host {
+			display: none;
+		}
+	</style>
+	<template>
+	</template>
+	<script>
+		(function(){
+			// put your static code here
+
+			Polymer({
+				is: 'demo-validate-endereco',
+				properties: {
+				},
+				attached: function() {
+				},
+				created: function() {
+				},
+                validate: function(val, cb) {
+                    var err = {};
+                    if (!val.logradouro) {
+                        err.logradouro = [
+                            { message: 'Logradouro é obrigatório' }
+                        ];
+                    }
+                    if (!val.cidade) {
+                        err.cidade = [
+                            { message: 'Cidade é obrigatório' }
+                        ];
+                    }
+                    if (!val.estado || val.estado === '-1') {
+                        err.estado = [
+                            { message: 'Estado é obrigatório' }
+                        ];
+                    }
+
+                    if (cb) {
+                        cb(null, err);
+                    }
+                },
+			});
+		}());
+	</script>
+</dom-module>

@@ -1,0 +1,17 @@
+<script>
+    (function(){
+        window.Rerum = window.Rerum || {};
+        var RBTS = window.Rerum.RBTS = window.Rerum.RBTS || {};
+        RBTS.Serviceable = {
+            serviceProvider: function() {
+                    var provider = Polymer.dom(this).querySelector("[service-provider]");
+                    if (!provider) {
+                        provider = document.createElement("rbts-service-provider");
+                        provider.setAttribute("service-provider", "");
+                        Polymer.dom(this).appendChild(provider);
+                    }
+                    return provider;
+            }
+        };
+    }());
+</script>
