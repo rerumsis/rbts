@@ -3,18 +3,16 @@
 <link rel="import" href="rbts-validable.html">
 <link rel="import" href="rbts-serviceable.html">
 <dom-module id="rbts-cad-endereco">
-	<style>
-		:host {
-			display: block;
-		}
-
+    <style>
+        :host {
+            display: block;
+        }
         p.error {
-            @apply(--rbts-error-message)
-            background-color: red;
+            @apply(--rbts-error-message) background-color: red;
             color: white;
         }
-	</style>
-	<template>
+    </style>
+    <template>
         <content select="[validate-endereco]"></content>
         <content select="rbts-service-provider"></content>
         <section>
@@ -52,57 +50,57 @@
                 <p class="error">{{item.message}}</p>
             </template>
         </section>
-	</template>
-	<script>
-		(function(){
-			// put your static code here
+    </template>
+    <script>
+        (function() {
+        	// put your static code here
 
-			Polymer({
-				is: 'rbts-cad-endereco',
-                behaviors: [ Rerum.RBTS.Validable, Rerum.RBTS.Serviceable ],
-				properties: {
-                    estadosDisponiveis: {
-                        type: Array,
-                        value: [
-                            {id: "-1", descricao: "Selecione"},
-                        ]
-                    },
-                    endereco: {
-                        type: Object,
-                        value: {
-                            logradouro: '',
-                            bairro: '',
-                            cidade: '',
-                            estado: {
-                                id: '-1',
-                                descricao: '',
-                            },
-                        },
-                    },
-                    validationErrors: {
-                        type: Object,
-                        value: {
-                            logradouro: [],
-                            bairro: [],
-                            cidade: [],
-                            estado: [],
-                        }
-                    },
-				},
-                observers: [
-                    '_changed(endereco.*, endereco)',
-                ],
-				attached: function() {
-                    this.serviceProvider().invoke('fetch-estados-disponiveis', null, function(err, estados){
-                        this.set('estadosDisponiveis', estados);
-                    }.bind(this));
-				},
-				created: function() {
-				},
-                _changed: function(path, val) {
-                    this.validate('[validate-endereco]', val);
-                },
-			});
-		}());
-	</script>
+        	Polymer({
+        		is: 'rbts-cad-endereco',
+        		behaviors: [Rerum.RBTS.Validable, Rerum.RBTS.Serviceable],
+        		properties: {
+        			estadosDisponiveis: {
+        				type: Array,
+        				value: [{
+        					id: "-1",
+        					descricao: "Selecione"
+        				}, ]
+        			},
+        			endereco: {
+        				type: Object,
+        				value: {
+        					logradouro: '',
+        					bairro: '',
+        					cidade: '',
+        					estado: {
+        						id: '-1',
+        						descricao: '',
+        					},
+        				},
+        			},
+        			validationErrors: {
+        				type: Object,
+        				value: {
+        					logradouro: [],
+        					bairro: [],
+        					cidade: [],
+        					estado: [],
+        				}
+        			},
+        		},
+        		observers: [
+        			'_changed(endereco.*, endereco)',
+        		],
+        		attached: function() {
+        			this.serviceProvider().invoke('fetch-estados-disponiveis', null, function(err, estados) {
+        				this.set('estadosDisponiveis', estados);
+        			}.bind(this));
+        		},
+        		created: function() {},
+        		_changed: function(path, val) {
+        			this.validate('[validate-endereco]', val);
+        		},
+        	});
+        }());
+    </script>
 </dom-module>

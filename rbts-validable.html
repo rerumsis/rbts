@@ -1,27 +1,27 @@
 <script>
-    (function(){
-        window.Rerum = window.Rerum || {};
-        var RBTS = window.Rerum.RBTS = window.Rerum.RBTS || {};
-        RBTS.Validable = {
-            properties: {
-                validationErrors: {
-                    type: Object,
-                },
-            },
+    (function() {
+    	window.Rerum = window.Rerum || {};
+    	var RBTS = window.Rerum.RBTS = window.Rerum.RBTS || {};
+    	RBTS.Validable = {
+    		properties: {
+    			validationErrors: {
+    				type: Object,
+    			},
+    		},
 
-            validate: function(selector, val) {
-                var validator = Polymer.dom(this).querySelector(selector);
-                if (validator && validator.validate) {
-                    validator.validate(val, function(err, validateResult){
-                        //TODO(andre): merge with previous validation
-                        this.set('validationErrors', validateResult);
-                    }.bind(this))
-                }
-            },
+    		validate: function(selector, val) {
+    			var validator = Polymer.dom(this).querySelector(selector);
+    			if (validator && validator.validate) {
+    				validator.validate(val, function(err, validateResult) {
+    					//TODO(andre): merge with previous validation
+    					this.set('validationErrors', validateResult);
+    				}.bind(this))
+    			}
+    		},
 
-            clearErrors: function() {
-                this.set('validationErrors', []);
-            },
-        }
+    		clearErrors: function() {
+    			this.set('validationErrors', []);
+    		},
+    	}
     }());
 </script>

@@ -1,0 +1,41 @@
+<dom-module id="rbts-form-documentacao-pessoafisica">
+    <style>
+        :host {
+            display: block;
+        }
+    </style>
+    <template>
+        <section>
+            <label>CPF:
+                <input type="text" value="{{value.documentacao.cpf.valor::changed}}">
+            </label>
+        </section>
+        <section>
+            <label>Identidade:
+                <input type="text" value="{{value.documentacao.identidade::changed}}">
+            </label>
+            <label>Orgão Emissor:
+                <input type="text" value="{{value.documentacao.orgaoEmissor::changed}}">
+            </label>
+            <label>Data de Expedição:
+                <input type="date" value="{{value.documentacao.dataExpedicao::changed}}">
+            </label>
+        </section>
+    </template>
+    <script>
+        (function() {
+        	// put your static code here
+
+        	Polymer({
+        		is: 'rbts-form-documentacao-pessoafisica',
+        		properties: {
+        			value: {
+        				type: Object,
+        			}
+        		},
+        		attached: function() {},
+        		created: function() {},
+        	});
+        }());
+    </script>
+</dom-module>

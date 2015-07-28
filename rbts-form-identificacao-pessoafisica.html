@@ -1,0 +1,101 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="./rbts-model-cadastro.html">
+<dom-module id="rbts-form-identificacao-pessoafisica">
+    <style>
+        :host {
+            display: block;
+        }
+    </style>
+    <template>
+        <section>
+            <label>Nome:
+                <input type="text" value="{{value.nome::changed}}">
+            </label>
+        </section>
+        <section>
+            <label>Sexo:
+                <select value="{{value.sexo.id::changed}}">
+                    <template is="dom-repeat" items="{{opcoesSexo}}">
+                        <option value="{{item.id}}">{{item.descricao}}</option>
+                    </template>
+                </select>
+            </label>
+            <label>Data de nascimento:
+                <input type="date" value="{{value.dataNascimento::changed}}">
+            </label>
+        </section>
+        <section>
+            <label>Nacionalidade:
+                <select value="{{value.nacionalidade.id::changed}}">
+                    <template is="dom-repeat" items="{{opcoesNacionalidade}}">
+                        <option value="{{item.id}}">{{item.descricao}}</option>
+                    </template>
+                </select>
+            </label>
+            <label>Naturalidade:
+                <input type="text" value="{{value.naturalidade::changed}}">
+            </label>
+        </section>
+        <section>
+            <label>Profissão:
+                <input type="text" value="{{value.naturalidade::changed}}">
+            </label>
+            <label>Situação:
+                <select value="{{value.situacao.id::changed}}">
+                    <template is="dom-repeat" items="{{opcoesSituacao}}">
+                        <option value="{{item.id}}">{{item.descricao}}</option>
+                    </template>
+                </select>
+            </label>
+        </section>
+        <section>
+            <label>Site:
+                <input type="text" value="{{value.site::changed}}">
+            </label>
+        </section>
+        <section>
+            <label>Observação:
+                <input type="text" value="{{value.observacao::changed}}">
+            </label>
+        </section>
+    </template>
+    <script>
+        (function() {
+        	// put your static code here
+
+        	Polymer({
+        		is: 'rbts-form-identificacao-pessoafisica',
+        		properties: {
+        			value: {
+        				type: Object,
+        			},
+        			opcoesSexo: {
+        				type: Array,
+        				value: [
+        					/* carregar via serviço */
+        					new Sexo("1", "Masculino"),
+        					new Sexo("2", "Feminino"),
+        					new Sexo("3", "Não desejo informar"),
+        				],
+        			},
+        			opcoesSituacao: {
+        				type: Array,
+        				value: [
+        					new SituacaoEntidade("1", "Ativo"),
+        					new SituacaoEntidade("2", "Inativo"),
+        				],
+        			},
+        			opcoesNacionalidade: {
+        				type: Array,
+        				value: [
+        					new Nacionalidade("1", "Brasil"),
+        					new Nacionalidade("2", "Colômbia"),
+        				],
+        			},
+        		},
+        		attached: function() {},
+        		created: function() {},
+        	});
+        }());
+    </script>
+</dom-module>

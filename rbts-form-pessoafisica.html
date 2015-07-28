@@ -1,0 +1,40 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="rbts-model-cadastro.html">
+<link rel="import" href="rbts-form-identificacao-pessoafisica.html">
+<link rel="import" href="rbts-form-documentacao-pessoafisica.html">
+<dom-module id="rbts-form-pessoafisica">
+    <style>
+        :host {
+            display: block;
+        }
+    </style>
+    <template>
+        <section>
+            <h2>Identificação</h2>
+            <rbts-form-identificacao-pessoafisica value="{{value}}">
+            </rbts-form-identificacao-pessoafisica>
+        </section>
+        <section>
+            <h2>Documentação</h2>
+            <rbts-form-documentacao-pessoafisica value="{{value}}">
+            </rbts-form-documentacao-pessoafisica>
+        </section>
+    </template>
+    <script>
+        (function() {
+        	// put your static code here
+
+        	Polymer({
+        		is: 'rbts-form-pessoafisica',
+        		properties: {
+        			value: {
+        				type: Object,
+        				value: new Pessoa(),
+        			}
+        		},
+        		attached: function() {},
+        		created: function() {},
+        	});
+        }());
+    </script>
+</dom-module>
